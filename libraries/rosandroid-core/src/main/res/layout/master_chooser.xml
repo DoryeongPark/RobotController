@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="280dp"
+            android:layout_height="45dp"
+            android:background="@drawable/wi_logo"/>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="33dp"
+            android:background="@drawable/title_image"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Robot URI:"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:textColor="#151515"/>
+
+            <EditText
+                android:id="@+id/master_chooser_uri"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="20"
+                android:hint="@string/master_uri_hint"
+                android:textColor="#151515"
+                android:singleLine="true">
+                <requestFocus />
+            </EditText>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/master_chooser_qr_code_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:onClick="qrCodeButtonClicked"
+                android:text="QR Code"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_attr" />
+
+            <Button
+                android:id="@+id/master_chooser_ok"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:onClick="okButtonClicked"
+                android:text="Connect"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_attr"/>
+
+
+            <Button
+                android:id="@+id/master_chooser_new_master_button"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:text="New Master"
+                android:onClick="newMasterButtonClicked"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_attr"
+               />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/master_chooser_cancel"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_margin="7dp"
+            android:onClick="cancelButtonClicked"
+            android:text="Exit"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_attr"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

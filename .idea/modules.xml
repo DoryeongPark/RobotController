@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/WI_project.iml" filepath="$PROJECT_DIR$/WI_project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/rosandroid-core/rosandroid-core.iml" filepath="$PROJECT_DIR$/libraries/rosandroid-core/rosandroid-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wi_project/wi_project.iml" filepath="$PROJECT_DIR$/wi_project/wi_project.iml" />
+    </modules>
+  </component>
+</project>
