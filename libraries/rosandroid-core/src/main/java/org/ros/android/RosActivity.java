@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.widget.Toast;
 import org.ros.exception.RosRuntimeException;
+import org.ros.node.DefaultNodeMainExecutor;
 import org.ros.node.NodeMain;
 import org.ros.node.NodeMainExecutor;
 
@@ -46,6 +47,8 @@ public abstract class RosActivity extends Activity {
 
   protected NodeMainExecutorService nodeMainExecutorService;
 
+  private boolean isPublicMaster = false;
+
   private final class NodeMainExecutorServiceConnection implements ServiceConnection {
     @Override
     public void onServiceConnected(ComponentName name, IBinder binder) {
@@ -58,12 +61,16 @@ public abstract class RosActivity extends Activity {
 //          }
 //        }
 //      });
+
+      nodeMainExecutorService.setMasterUri(null);
       startMasterChooser();
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
+
     }
+
   };
 
   protected RosActivity(String notificationTicker, String notificationTitle) {
@@ -103,16 +110,34 @@ public abstract class RosActivity extends Activity {
     }
 
     super.onDestroy();
+
   }
 
-  protected void restart(){
+  protected void killingNodes(){
 
-    if (nodeMainExecutorService != null) {
+    final NodeMainExecutorService
+            nodeMainExecutorServiceForShutDown = nodeMainExecutorService;
+    final ServiceConnection
+            nodeMainExecutorServiceConnectionForShutDown = nodeMainExecutorServiceConnection;
 
-      nodeMainExecutorService.shutdown();
-      unbindService(nodeMainExecutorServiceConnection);
-      nodeMainExecutorService = null;
-      System.out.println("Service disconnected...");
+    nodeMainExecutorService = null;
+    nodeMainExecutorServiceConnection = null;
+
+    if (nodeMainExecutorServiceForShutDown != null) {
+
+      new AsyncTask<Void, Void, Void>() {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+          nodeMainExecutorServiceForShutDown.shutdown();
+          unbindService(nodeMainExecutorServiceConnectionForShutDown);
+
+          return null;
+
+        }
+
+      }.execute();
 
     }
 
@@ -120,6 +145,13 @@ public abstract class RosActivity extends Activity {
     startNodeMainExecutorService();
 
   }
+
+  public boolean isPublicMaster() {
+
+    return isPublicMaster;
+
+  }
+
 
   /**
    * This method is called in a background thread once this {@link android.app.Activity} has
@@ -168,6 +200,7 @@ public abstract class RosActivity extends Activity {
             }
           };
           task.execute(data.getBooleanExtra("ROS_MASTER_PRIVATE", true));
+          isPublicMaster = true;
           try {
             task.get();
           } catch (InterruptedException e) {
@@ -183,6 +216,7 @@ public abstract class RosActivity extends Activity {
             throw new RosRuntimeException(e);
           }
           nodeMainExecutorService.setMasterUri(uri);
+          isPublicMaster = false;
         }
         // Run init() in a new thread as a convenience since it often requires
         // network access.

@@ -119,19 +119,58 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:gravity="bottom">
-
-        <Button
-            android:id="@+id/master_chooser_cancel"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_margin="7dp"
-            android:onClick="cancelButtonClicked"
-            android:text="Exit"
-            android:textColor="#ffffff"
-            android:background="@drawable/button_attr"/>
+        android:orientation="horizontal"
+        android:gravity="center">
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/master_chooser_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:onClick="cancelButtonClicked"
+                android:text="Exit"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_attr"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,8 +7,8 @@
 
     <LinearLayout
         android:id="@+id/main_style_dialog"
-        android:layout_width="340dp"
-        android:layout_height="490dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:orientation="vertical"
         android:background="#ffffff"
        >
@@ -18,7 +17,7 @@
             android:id="@+id/dialog_gridviewarea"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="7">
+            android:layout_weight="4">
 
             <GridView
                 android:id="@+id/dialog_gridview"
@@ -33,24 +32,26 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/dialog_buttonarea"
+            android:id="@+id/theme_dialog_buttonarea"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
             android:gravity="center"
             android:paddingBottom="11dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:paddingLeft="100dp"
+            android:paddingRight="100dp"
             android:paddingTop="15dp"
-            android:background="#101010">
+            android:background="#ffffff">
 
             <Button
                 android:id="@+id/dialog_btn_exit"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="@drawable/button_attr"
                 android:text="OK"
-                android:textSize="10sp"/>
+                android:textSize="14sp"
+                android:textColor="#ffffff"/>
 
         </LinearLayout>
 

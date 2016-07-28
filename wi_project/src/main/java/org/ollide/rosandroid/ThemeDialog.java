@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -14,20 +13,19 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Vector;
 
 /**
  * Created by Felix on 2016-06-29.
  */
-public class StyleDialog extends Dialog {
+public class ThemeDialog extends Dialog {
 
     private Context context;
     private Vector<Integer> imageSet;
 
-    private ColorAdjuster ca;
-    private ColorCombinations ccs;
+    private Theme ca;
+    private ThemeTypes ccs;
 
     private Button exitBtn;
 
@@ -40,7 +38,7 @@ public class StyleDialog extends Dialog {
         lpWindow.dimAmount = 0.5f;
         getWindow().setAttributes(lpWindow);
 
-        setContentView(R.layout.dialog_coloradjuster);
+        setContentView(R.layout.dialog_theme);
 
         initGridView();
 
@@ -50,7 +48,7 @@ public class StyleDialog extends Dialog {
 
             public void onClick(View v){
 
-                StyleDialog.this.dismiss();
+                ThemeDialog.this.dismiss();
 
             }
 
@@ -58,7 +56,7 @@ public class StyleDialog extends Dialog {
 
     }
 
-    public StyleDialog(Context context, ColorAdjuster ca, Vector<Integer> imgSet) {
+    public ThemeDialog(Context context, Theme ca, Vector<Integer> imgSet) {
 
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
 
@@ -66,7 +64,7 @@ public class StyleDialog extends Dialog {
         this.context = context;
 
         this.ca = ca;
-        ccs = new ColorCombinations();
+        ccs = new ThemeTypes();
 
     }
 
@@ -81,8 +79,8 @@ public class StyleDialog extends Dialog {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
-                ca.setCurrentColors(ccs.at(position));
-                ca.adjustColors();
+                ca.setCurrentTheme(ccs.at(position));
+                ca.adjustCurrentTheme();
 
             }
         });
@@ -127,7 +125,7 @@ public class StyleDialog extends Dialog {
                 Bitmap bmp = BitmapFactory.decodeResource(
                         context.getResources(), imageSet.elementAt(position));
 
-                bmp = Bitmap.createScaledBitmap(bmp, 350, 200, false);
+                bmp = Bitmap.createScaledBitmap(bmp, 350, 220, false);
 
                 iv = new ImageView(context);
                 iv.setAdjustViewBounds(true);

@@ -1,3 +1,6 @@
+/**
+ * Created by Felix on 2016-07-28.
+ */
 package org.ollide.rosandroid;
 
 import android.content.Context;
@@ -16,7 +19,7 @@ import java.util.Vector;
 /**
  * Created by Felix on 2016-06-24.
  */
-public class Joystick extends ImageView{
+public class MainJoystick extends ImageView{
 
     public static final float LEFT = 1.0f;
     public static final float CENTER = 0.0f;
@@ -58,21 +61,21 @@ public class Joystick extends ImageView{
 
     }
 
-    public Joystick(Context context){
+    public MainJoystick(Context context){
 
         super(context);
         initSettings(context);
 
     }
 
-    public Joystick(Context context, AttributeSet attrs) {
+    public MainJoystick(Context context, AttributeSet attrs) {
 
         super(context, attrs);
         initSettings(context);
 
     }
 
-    public Joystick(Context context, AttributeSet attrs, int defStyle) {
+    public MainJoystick(Context context, AttributeSet attrs, int defStyle) {
 
         super(context, attrs, defStyle);
         initSettings(context);
@@ -120,8 +123,8 @@ public class Joystick extends ImageView{
         //Touch event setting
         this.setOnTouchListener(new OnTouchListener(){
 
-                    @Override
-                    public boolean onTouch(View v, MotionEvent e){
+            @Override
+            public boolean onTouch(View v, MotionEvent e){
 
                 final int X = (int)e.getRawX();
                 final int Y = (int)e.getRawY();
@@ -138,8 +141,8 @@ public class Joystick extends ImageView{
 
                         if(isInside(X, Y)) {
 
-                            Joystick.this.setTranslationX(translateX);
-                            Joystick.this.setTranslationY(translateY);
+                            MainJoystick.this.setTranslationX(translateX);
+                            MainJoystick.this.setTranslationY(translateY);
 
                             //Calculate angle
                             float angleCalculated = calculateAngle(X, Y);
@@ -162,9 +165,6 @@ public class Joystick extends ImageView{
                             float maxTranslateX = (float)(maximumPoints.elementAt(0) - centerX);
                             float maxTranslateY = (float)(maximumPoints.elementAt(1) - centerY);
 
-                            acc = Math.abs((maxTranslateY / (areaMovable.height() / 2 - HEIGHT / 2))
-                                    * 100.0f);
-
                             //Calculate angle
                             float angleCalculated = calculateAngle(X, Y);
                             angle = parseAngle(translateX, translateY, angleCalculated);
@@ -172,8 +172,10 @@ public class Joystick extends ImageView{
                             angleDir = determineAngleDir(maxTranslateX);
                             accDir = determineAccDir(maxTranslateY);
 
-                            Joystick.this.setTranslationX(maxTranslateX);
-                            Joystick.this.setTranslationY(maxTranslateY);
+                            acc = 100.0f;
+
+                            MainJoystick.this.setTranslationX(maxTranslateX);
+                            MainJoystick.this.setTranslationY(maxTranslateY);
 
                             //-- Set data to be sent
                             setData(angle, angleDir, acc, accDir);
@@ -188,8 +190,8 @@ public class Joystick extends ImageView{
 
                     case MotionEvent.ACTION_UP:
 
-                        Joystick.this.setTranslationX(0);
-                        Joystick.this.setTranslationY(0);
+                        MainJoystick.this.setTranslationX(0);
+                        MainJoystick.this.setTranslationY(0);
 
                         angleDir = CENTER;
                         angle = 0.0f;
@@ -285,10 +287,10 @@ public class Joystick extends ImageView{
         if(translateX < 0)
             return LEFT;
 
-         else if(translateX > 0)
+        else if(translateX > 0)
             return RIGHT;
 
-         else
+        else
             return CENTER;
 
     }
@@ -299,22 +301,15 @@ public class Joystick extends ImageView{
         double dy = pY - centerY;
 
         double distance = Math.sqrt(Math.pow(dx, 2.0d) + Math.pow(dy, 2.0d));
-        double radius = (areaMovable.height() / 2 - HEIGHT / 2);
+        double radius = (areaMovable.height()/2 - HEIGHT /2);
 
-        //acc = (float)(distance / radius * 100);
+        acc = (float)(distance / radius * 100);
 
-        if(distance < areaMovable.height() / 2 - HEIGHT / 2) {
-
-            acc = (float)Math.abs(centerY - pY) / (areaMovable.height() / 2) * 100.0f;
+        if(distance < areaMovable.height()/2 - HEIGHT /2)
             return true;
 
-        }
-
-        else {
-
+        else
             return false;
-
-        }
 
     }
 
@@ -389,3 +384,4 @@ public class Joystick extends ImageView{
     }
 
 }
+

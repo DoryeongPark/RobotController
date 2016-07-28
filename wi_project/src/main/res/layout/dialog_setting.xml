@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/main_setting_dialog"
+        android:layout_width="340dp"
+        android:layout_height="340dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Angular Sensitivity"
+                    android:textColor="#0000aa"
+                    android:textSize="12sp"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                >
+
+                <TextView
+                    android:id="@+id/setting_dialog_angular_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textColor="#0000aa"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="30dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_dialog_angular_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <SeekBar
+                android:id="@+id/angular_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:max="50"
+                android:progress="25"
+                android:thumb="@drawable/seekbar_thumb"
+                android:maxHeight="2dp"
+                android:progressDrawable="@drawable/seekbar_attr"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Speed"
+                    android:textColor="#0000aa"
+                    android:textSize="12sp"
+                    android:layout_gravity="left"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="bottom"
+                >
+
+                <TextView
+                    android:id="@+id/setting_dialog_speed_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textColor="#0000aa"
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="30dp"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_dialog_speed_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <SeekBar
+                android:id="@+id/speed_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:max="50"
+                android:progress="25"
+                android:thumb="@drawable/seekbar_thumb"
+                android:maxHeight="2dp"
+                android:progressDrawable="@drawable/seekbar_attr"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting_dialog_button_area"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <Button
+                android:id="@+id/setting_dialog_button"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="OK"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_attr"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

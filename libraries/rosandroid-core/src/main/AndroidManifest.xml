@@ -9,7 +9,8 @@
 
     <application>
 
-        <activity android:name="org.ros.android.MasterChooser" />
+        <activity android:name="org.ros.android.MasterChooser"
+            android:screenOrientation="portrait"/>
 
         <service
             android:name="org.ros.android.NodeMainExecutorService"

@@ -13,15 +13,16 @@
         >
 
         <TextView
+            android:id="@+id/dialog_connection_error_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Connection Error"
+            android:text=""
             android:layout_marginBottom="4dp"
             android:textColor="#222222"
             android:textSize="14dp"/>
 
         <TextView
-            android:id="@+id/dialog_connection_error_url"
+            android:id="@+id/dialog_connection_error_uri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
@@ -34,7 +35,7 @@
             android:layout_height="30dp"
             android:background="@drawable/button_attr"
             android:textColor="#ffffff"
-            android:text="OK" />
+            android:text="Back" />
 
     </LinearLayout>
 
